@@ -10,4 +10,5 @@ Sub-Enum_Script.sh --> This script takes a file containing all domains and enume
 
 Syntax --> 
 ./Cvss.sh  or ./Cvss.sh | tee details.txt
+
 Then copy all the cves you want details for like CVE-2020-0601, CVE-2020-13777, CVE-2021-40449.
