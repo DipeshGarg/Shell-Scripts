@@ -55,9 +55,10 @@ n=`echo "${#url[@]}"`
 echo -e "List of tools which can be installed...\n"
 for ((i=0; i<$n ;i++))
 do
-  if [ i -eq 16 ]
+  if [ $i -eq 16 ]
   then
-   echo "Github Tools below...\n"
+   echo -e "\n# Github Tools below..."
+  fi
   echo -e "$i. \c"
   echo -e "$(echo "${url[i]}" | cut -d "." -f2 | cut -d "/" -f3) \c"
   i=$(($i+1))
