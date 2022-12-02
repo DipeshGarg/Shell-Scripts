@@ -23,29 +23,29 @@ url=(
 'https://github.com/robertdavidgraham/masscan.git'
 'https://github.com/skylot/jadx.git'
 'https://github.com/sqlmapproject/sqlmap.git'
-'https://github.com/tomnomnom/assetfinder.git'
-'https://github.com/OWASP/Amass.git'  #last one
+'https://github.com/projectdiscovery/httpx-toolkit.git'
+'https://github.com/OWASP/Amass.git'
+'https://github.com/tomnomnom/assetfinder.git' #last one
 'https://github.com/0xInfection/XSRFProbe.git'
 'https://github.com/codingo/NoSQLMap.git'
 'https://github.com/defparam/smuggler.git'
 'https://github.com/FortyNorthSecurity/EyeWitness.git'
 'https://github.com/hahwul/XSpear.git'
-'https://github.com/lc/gau.git'
 'https://github.com/laconicwolf/cors-scanner.git'
+'https://github.com/lc/gau.git'
 'https://github.com/michenriksen/aquatone.git'
-'https://github.com/projectdiscovery/chaos-client.git'
-'https://github.com/projectdiscovery/httpx.git'
-'https://github.com/projectdiscovery/shuffledns.git'
 'https://github.com/projectdiscovery/uncover.git'
+'https://github.com/projectdiscovery/chaos-client.git'
+'https://github.com/projectdiscovery/shuffledns.git'
 'https://github.com/s0md3v/XSStrike.git'
 'https://github.com/sensepost/gowitness.git'
 'https://github.com/swisskyrepo/SSRFmap.git'
 'https://github.com/r0oth3x49/ghauri.git'
-'https://github.com/urbanadventurer/WhatWeb.git'
 'https://github.com/Dheerajmadhukar/4-ZERO-3.git'
 'https://github.com/initstring/cloud_enum.git'
  #'https://github.com/tomnomnom/gf.git'
 'https://github.com/1ndianl33t/Gf-Patterns.git'
+'https://github.com/urbanadventurer/WhatWeb.git'
 'https://github.com/D4Vinci/Clickjacking-Tester.git'
 'https://github.com/GerbenJavado/LinkFinder.git'
 'https://github.com/tomnomnom/qsreplace.git'
@@ -68,10 +68,12 @@ read input
 
 IFS="," read -a ans <<< $input
 n=`echo "${#ans[@]}"`
+echo -e "\nStarted installing the tools...\n"
+
 for ((i=0; i<n; i++))
 do
   name=`echo $(echo ${url[${ans[i]}]} | cut -d "." -f2 | cut -d "/" -f3 )`
-  if [[ $ans[i] -lt 28 ]];
+  if [ ${ans[i]} -lt 16 ]
   then
     echo "$(sudo apt-get install $name -y )"
   else
