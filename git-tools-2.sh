@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# echo "name ?"
-# read name
-# echo "$(sudo apt-get install $name)"
-# read out
-# echo "$out"
-# echo $($out > out.txt)
-# count=`echo $(wc -l out.txt)`
-# echo $count
-
 url=(
 'https://github.com/commixproject/commix.git'
 'https://github.com/epi052/feroxbuster.git'
@@ -24,14 +15,15 @@ url=(
 'https://github.com/skylot/jadx.git'
 'https://github.com/sqlmapproject/sqlmap.git'
 'https://github.com/projectdiscovery/httpx-toolkit.git'
-'https://github.com/OWASP/Amass.git'
+'https://github.com/OWASP/amass.git'
 'https://github.com/tomnomnom/assetfinder.git' #last one
 'https://github.com/0xInfection/XSRFProbe.git'
 'https://github.com/codingo/NoSQLMap.git'
 'https://github.com/defparam/smuggler.git'
 'https://github.com/FortyNorthSecurity/EyeWitness.git'
 'https://github.com/hahwul/XSpear.git'
-'https://github.com/laconicwolf/cors-scanner.git'
+'https://github.com/chenjj/CORScanner.git'
+'https://github.com/s0md3v/Corsy.git'
 'https://github.com/lc/gau.git'
 'https://github.com/michenriksen/aquatone.git'
 'https://github.com/projectdiscovery/uncover.git'
@@ -40,6 +32,7 @@ url=(
 'https://github.com/s0md3v/XSStrike.git'
 'https://github.com/sensepost/gowitness.git'
 'https://github.com/swisskyrepo/SSRFmap.git'
+'https://github.com/Dewalt-arch/pimpmykali.git'
 'https://github.com/r0oth3x49/ghauri.git'
 'https://github.com/Dheerajmadhukar/4-ZERO-3.git'
 'https://github.com/initstring/cloud_enum.git'
