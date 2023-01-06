@@ -14,6 +14,16 @@ lightyellow=`echo -en "\e[93m"`
 lightblue=`echo -en "\e[94m"`
 lightpurple=`echo -en "\e[95m"`
 lightaqua=`echo -en "\e[96m"`
+#----------------
+# red='\e[31m'
+# green='\e[32m'
+# blue='\e[34m'
+# cyan='\e[96m'
+# ltcyan='\e[96m'
+# yellow='\e[33m'
+# black='\e[38;5;016m'
+# bluebg='\e[48;5;038m'${black}
+# normal='\e[0m'
 }
 
 url=(
@@ -86,17 +96,18 @@ do
   then
    echo -e "\n# Github Tools below..."
   fi
-
-  if [ $(($i/2)) -eq 0 ]
-  then
-#    ${purple}
+  # a=`echo $(expr $i % 2)`
+  # echo "value of a "=$a
+  # if [ $a -eq 0 ]
+  # then
+    echo -ne "${green}"
     real
-#    ${normal}
-  else
-#    ${grey}
-    real
-#    ${normal}
-  fi
+    echo -ne "${normal}"
+  # else
+  #   echo -ne "${gray}"
+  #   real
+  #   echo -ne "${normal}"
+  # fi
 done
 
 echo -e "\nSyntax: 3,2,4 or exit"
