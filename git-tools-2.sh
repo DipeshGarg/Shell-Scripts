@@ -13,12 +13,12 @@ aqua=`echo -en "\e[36m"`
 }
 
 url=(
-'https://github.com/commixproject/commix.git'
-'https://github.com/epi052/feroxbuster.git'
-'https://github.com/ffuf/ffuf.git'
-'https://github.com/haccer/subjack.git'
-#'https://github.com/jordansissel/xdotool.git'
-'https://github.com/hakluke/hakrawler.git'
+'https://github.com/commixproject/commix.git' #0
+'https://github.com/epi052/feroxbuster.git'  #1
+'https://github.com/ffuf/ffuf.git' #2
+'https://github.com/haccer/subjack.git' #3
+#'https://github.com/jordansissel/xdotool.git' 
+'https://github.com/hakluke/hakrawler.git' #4
 'https://github.com/jaeles-project/gospider.git'
 'https://github.com/java-decompiler/jd-gui.git'
 'https://github.com/projectdiscovery/dnsx.git'
@@ -30,6 +30,7 @@ url=(
 'https://github.com/projectdiscovery/httpx-toolkit.git'
 'https://github.com/OWASP/amass.git'
 'https://github.com/tomnomnom/assetfinder.git'
+'https://github.com/rbsec/sslscan.git'
 # Github Tools
 'https://github.com/0xInfection/XSRFProbe.git'
 'https://github.com/codingo/NoSQLMap.git'
@@ -73,7 +74,7 @@ $normal# Kali Tools Below...$red
  6. jd-gui               7. dnsx                  8. nuclei
  9. subfinder           10. masscan              11. jadx
 12. sqlmap              13. httpx-toolkit        14. amass
-15. assetfinder
+15. assetfinder         16. sslscan
 
 $normal# Github Tools Below...$green
 16. XSRFProbe           17. NoSQLMap             18. smuggler
