@@ -17,7 +17,7 @@ url=(
 'https://github.com/epi052/feroxbuster.git'  #1
 'https://github.com/ffuf/ffuf.git' #2
 'https://github.com/haccer/subjack.git' #3
-#'https://github.com/jordansissel/xdotool.git' 
+#'https://github.com/jordansissel/xdotool.git'
 'https://github.com/hakluke/hakrawler.git' #4
 'https://github.com/jaeles-project/gospider.git'
 'https://github.com/java-decompiler/jd-gui.git'
@@ -110,21 +110,26 @@ echo -e "\nSyntax: 3,2,4 or exit"
 echo "Which of these tools you want to install ?"
 read input
 
-IFS="," read -a ans <<< $input
-n=`echo "${#ans[@]}"`
-echo -e "\nStarted installing the tools...\n"
+if [[ $input -eq 'exit' || $input -eq 'Exit' ]]
+then
+  echo "${red}Closing the script...$normal"
+else
+  IFS="," read -a ans <<< $input
+  n=`echo "${#ans[@]}"`
+  echo -e "${aqua}\nStarted installing the tools...\n$normal"
 
-for ((i=0; i<n; i++))
-do
-  name=`echo $(echo ${url[${ans[i]}]} | cut -d "." -f2 | cut -d "/" -f3 )`
-  if [ ${ans[i]} -lt $aptcount ]; then
-    echo "sudo apt-get install $name"
-    echo "$(sudo apt-get install $name -y )"
-  elif [[ ${ans[i]} -gt $gocount ]]; then
-    echo "go install ${url[${ans[i]}]}"
-    echo "$(go install ${url[${ans[i]}]} )"
-  else
-    echo "sudo git clone ${url[${ans[i]}]}"
-    echo "$(sudo git clone ${url[${ans[i]}]})"
-  fi
-done
+  for ((i=0; i<n; i++))
+  do
+    name=`echo $(echo ${url[${ans[i]}]} | cut -d "." -f2 | cut -d "/" -f3 )`
+    if [ ${ans[i]} -lt $aptcount ]; then
+      echo "sudo apt-get install $name"
+      echo "$(sudo apt-get install $name -y )"
+    elif [[ ${ans[i]} -gt $gocount ]]; then
+      echo "go install ${url[${ans[i]}]}"
+      echo "$(go install ${url[${ans[i]}]} )"
+    else
+      echo "sudo git clone ${url[${ans[i]}]}"
+      echo "$(sudo git clone ${url[${ans[i]}]})"
+    fi
+  done
+fi
