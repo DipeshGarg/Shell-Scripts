@@ -95,22 +95,6 @@ $normal# Go Tools Below...$aqua
 45. katana
 $normal "
 }
-# n=`echo "${#url[@]}"`
-# echo -e "List of tools which can be installed...\n"
-# for ((i=0; i<$n ;i++))
-# do
-#   if [ $i -eq $aptcount ]
-#   then
-#    echo -e "\n# Github Tools below..."
-#  elif [[ $i -gt $gocount ]]; then
-#    echo -e "\n# Go Tools below..."
-#   fi
-#   echo -e "$i. \c"
-#   echo -e "$(echo "${url[i]}" | cut -d "." -f2 | cut -d "/" -f3) \c"
-#   i=$(($i+1))
-#   echo -e "\t\t$i. \c"
-#   echo "$(echo "${url[i]}" | cut -d "." -f2 | cut -d "/" -f3)"
-# done
 
 echo -e "\nSyntax: 3,2,4 or exit"
 echo "Which of these tools you want to install ?"
