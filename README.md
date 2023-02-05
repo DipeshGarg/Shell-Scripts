@@ -16,8 +16,6 @@ Syntax -->
  This tool can install nearly all important pentesting and bug hunting tools with just some key pressing.
  ![image](https://user-images.githubusercontent.com/109458091/216826929-83b93597-2b02-431e-9023-15495926762f.png)
 
-  ![image](https://user-images.githubusercontent.com/109458091/216826864-919ed708-4822-43d4-b86b-3a745c419e6a.png)
-
 ----------------------------------------------------------------------------------------
 # Cvss.sh  
 Syntax --> 
