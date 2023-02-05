@@ -18,35 +18,39 @@ lightpurple=`echo -en "\e[95m"`
 lightaqua=`echo -en "\e[96m"`
 }
 
-echo " Syntax :- ./Sub-Enum-Script.sh <filename having all domains of target> "
-echo " In the End you will have a Sub1.txt and probed1.txt "
-echo " Sub1.txt will contain all the subdomains "
-echo " Probed1.txt will have all alive subdomains ready to use "
-
-total=0
-if test -a ~/automated/sub1.txt
+if [[ -z "$1" || -z "$2" ]]
 then
-echo "${red}sub1.txt is already there.$normal"
-fi
+  	echo -e " ${red}Invalid Syntax:- "
+	echo -e " ${normal}sub-enum.sh <filepath> <target-name> \n"
+elif test -a /home/kali/automated/sub1.txt
+then
+  	echo "${red}sub1.txt is already there.$normal"
+else
+	echo -e " ${aqua}\n# Syntax :- ./sub-enum.sh <filepath> <target-name> $normal"
+	echo -e "# In the End you will have a Sub1.txt and probed1.txt "
+	echo -e "# Sub1.txt will contain all the subdomains "
+	echo -e "# Probed1.txt will have all alive subdomains ready to use \n"
 
-total=0
-while read domain
-do
-	echo $domain ; d=0
-	echo $(subfinder -d $domain | tee -a sub1.txt)							#Subfinder Passive Enumeration
-	echo "${lightpurple}Now Assetfinder has started....." ; echo -n "$normal"
+  	lines=`echo $(cat $1 | wc -l)`
+	total=0
+  	i=0
+	while read domain
+	do
+   		i=$(($i+1));
+		echo "[$i/$lines] "${aqua}$domain ; d=0
+		echo "${lightpurple}Now Amass has started....." ; echo -n "$normal"			#Amass passive scan
+		echo $(amass enum -passive -d $domain | tee -a sub1.txt) 														#Amass Passive Enumeration
+
+		echo "${lightpurple}[$i/$lines] Now Subfinder has started....." ; echo -n "$normal"	#Subfinder
+		echo $(subfinder -d $domain | tee -a sub1.txt)																			#Subfinder Passive Enumeration
+
+		echo "${lightpurple}[$i/$lines] Now Assetfinder has started....." ; echo -n "$normal"	#Assetfinder 
+		echo $(assetfinder --subs-only $domain | tee -a sub1.txt)														#Assetfinder Passive Enumeration
 	
-	echo $(assetfinder --subs-only $domain | tee -a sub1.txt)					#Assetfinder Passive Enumeration
-	echo "${lightpurple}Now Amass has started....." ; echo -n "$normal"
-	
-	echo $(amass enum -passive -d $domain | tee -a sub1.txt) 					#Amass Passive Enumeration
-	
-	# echo $(shuffledns -d $domain -w {{wordlist}} -r {{resolvers file}}				#Shuffledns Incomplete { requires resolvers.txt }
-	
-	sum=`echo $(cat sub1.txt | wc -l)` ; total=$(($sum - $total))
-	d=`echo $(cat sub1.txt|grep $domain|sort |uniq | wc -l)`
-	echo "${orange}Subdomains found for $domain = $total, $d {Non-Duplicate}";
-	echo "$normal";sum=0 ;
+		sum=`echo $(cat sub1.txt | wc -l)` ; total=$(($sum - $total))
+		d=`echo $(cat sub1.txt|grep $domain|sort |uniq | wc -l)`
+		echo "${orange}Subdomains found for $domain = $total, $d {Non-Duplicate}";
+		echo "$normal";sum=0 ;
 
 done < $1
 
