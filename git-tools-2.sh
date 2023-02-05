@@ -17,7 +17,6 @@ url=(
 'https://github.com/epi052/feroxbuster.git'
 'https://github.com/ffuf/ffuf.git'
 'https://github.com/haccer/subjack.git'
-#'https://github.com/jordansissel/xdotool.git'
 'https://github.com/hakluke/hakrawler.git'
 'https://github.com/jaeles-project/gospider.git'
 'https://github.com/java-decompiler/jd-gui.git'
