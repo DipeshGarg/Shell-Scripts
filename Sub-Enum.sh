@@ -21,12 +21,12 @@ lightaqua=`echo -en "\e[96m"`
 if [[ -z "$1" || -z "$2" ]]
 then
   	echo -e " ${red}Invalid Syntax:- "
-	echo -e " ${normal}sub-enum.sh <filepath> <target-name> \n"
+	echo -e " ${normal}Sub-Enum.sh <filepath> <target-name> \n"
 elif test -a /home/kali/automated/sub1.txt
 then
   	echo "${red}sub1.txt is already there.$normal"
 else
-	echo -e " ${aqua}\n# Syntax :- ./sub-enum.sh <filepath> <target-name> $normal"
+	echo -e " ${aqua}\n# Syntax :- ./Sub-Enum.sh <filepath> <target-name> $normal"
 	echo -e "# In the End you will have a Sub1.txt and probed1.txt "
 	echo -e "# Sub1.txt will contain all the subdomains "
 	echo -e "# Probed1.txt will have all alive subdomains ready to use \n"
