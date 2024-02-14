@@ -19,15 +19,20 @@ lightaqua=`echo -en "\e[96m"`
 }
 
 echo "CVE number ? Format --> CVE-2020-0601, CVE-2020-13777, CVE-2021-40449"
-read cve
-IFS=", " read -a CVE <<< $cve     #Spliting into array with ","
+read cve1
+#cve1=`echo $(echo "${cve}" | egrep -i 'CVE-[[:digit:]]*[[:digit:]]-[[:digit:]]*[[:digit:]]' -o | tr '\n' ',' | sed 's/,/, /g')`
+
+#echo $cve | egrep -i 'CVE-[[:digit:]]*[[:digit:]]-[[:digit:]]*[[:digit:]]' -o
+echo ${cve1}
+IFS=", " read -a CVE <<< ${cve1}     #Spliting into array with ", "
 n=`echo "${#CVE[@]}"`
 echo "Total CVEs = $n"
 
 for (( i=0; i<$n; i++ ))
 do
   a=`echo $(curl -H 'Cache-Control: no-cache','Connection: keep-alive' --user-agent 'Googlebot/2.1 (+http://www.google.com/bot.html)' --silent "https://vulmon.com/vulnerabilitydetails?qid=${CVE[i]}&scoretype=cvssv3" > temp.txt)`
-  echo -n "https://vulmon.com/vulnerabilitydetails?qid=${red}${CVE[i]}${normal}&scoretype=cvssv3 "
+  echo -n "${aqua}Vulmon->${normal} https://vulmon.com/vulnerabilitydetails?qid=${red}${CVE[i]}${normal}&scoretype=cvssv3 || ";
+  echo -n "${aqua}NIST->${normal} https://nvd.nist.gov/vuln/detail/${red}${CVE[i]}${normal} ";
   echo $(echo "${orange}" ;cat temp.txt | grep -e "CVSS v3 Base Score:" -e "jsdescription1 content_overview" | sed 's/<\/div>//g;s/<p class="jsdescription1 content_overview"//g;s/\/p>//g' > 1temp.txt )
   echo $(cat 1temp.txt | awk '$1=$1' FS=">" OFS="--> ${lightgreen}" | awk '$1=$1' FS="<" OFS="${red}<${CVE[i]}>" )
   echo -e "${normal}"
